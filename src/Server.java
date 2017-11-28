@@ -11,18 +11,28 @@ public class Server
 
     public void run() throws Exception
     {
-        ServerSocket SRVSOCK = new ServerSocket(1027);
-        Socket SOCK = SRVSOCK.accept();
-        InputStreamReader IR = new InputStreamReader(SOCK.getInputStream());
-        BufferedReader BR = new BufferedReader(IR);
-
-        String MESSAGE = BR.readLine();
-        System.out.println(MESSAGE);
-
-        if (MESSAGE !=null)
+        ServerSocket srvSk = new ServerSocket(1028);
+        try
         {
-            PrintStream PS = new PrintStream(SOCK.getOutputStream());
-            PS.println("Message recieved");
+            while(true)
+            {
+                Socket SK = srvSk.accept();
+                PrintStream PS = new PrintStream(SK.getOutputStream());
+
+                InputStreamReader IR = new InputStreamReader(SK.getInputStream());
+                BufferedReader BR = new BufferedReader(IR);
+
+                String message = BR.readLine();
+
+                if(message.equals("connected"))
+                    PS.println("server: got connection from client " + SK.getLocalAddress().getHostAddress());
+                else
+                    PS.println("other message received");
+            }
+        }
+        finally
+        {
+            srvSk.close();
         }
     }
 }
