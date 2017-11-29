@@ -29,9 +29,10 @@ public class Client
         while(!input.equals("EXIT"))
         {
             out.println(input);
-            System.out.println(in.readLine());
+            String feedback = in.readLine();
+            System.out.println(feedback);
             count = 0;
-            while(!input.equals("."))
+            while(!input.equals(".") && !feedback.equals("400: Not a valid command!"))
             {
                 count++;
                 System.out.print("c: ");

@@ -42,13 +42,21 @@ public class Server
                 while(true)
                 {
                     String input = in.readLine();
-                    if (input.equals("UPPERCASE"))
+                    if (input.equals("UPPERCASE") || input.equals("LOWERCASE") || input.equals("REVERSE"))
                     {
+                        String function = input;
                         out.println("s: 200 OK");
                         input = in.readLine();
                         while(!input.equals("."))
                         {
-                            list.add(input.toUpperCase());
+                            if(function.equals("UPPERCASE"))
+                                list.add(input.toUpperCase());
+                            if(function.equals("LOWERCASE"))
+                                list.add(input.toLowerCase());
+                            if(function.equals("REVERSE"))
+                            {
+
+                            }
                             input = in.readLine();
                         }
                         Iterator itr = list.iterator();
@@ -56,10 +64,10 @@ public class Server
                         {
                             out.println("s: " + itr.next());
                         }
-                        System.out.println("pressed");
                         list.clear();
                     }
 
+                    /*
                     if (input.equals("LOWERCASE"))
                     {
                         out.println("200 OK");
@@ -69,10 +77,15 @@ public class Server
                     {
                         out.println("200 OK");
                     }
-
-                    if (input.equals("EXIT"))
+                    */
+                    else if (input.equals("EXIT"))
                     {
                         out.println("200 OK");
+                        SK.close();
+                    }
+                    else
+                    {
+                        out.println("400: Not a valid command!");
                     }
                 }
             }
