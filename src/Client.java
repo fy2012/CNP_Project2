@@ -20,6 +20,7 @@ public class Client
         in = new BufferedReader(new InputStreamReader(SK.getInputStream()));
         out = new PrintWriter(SK.getOutputStream(), true);
         System.out.println(in.readLine());
+        System.out.println(in.readLine());
 
         Scanner kb = new Scanner(System.in);
         System.out.print("c: ");

@@ -37,16 +37,20 @@ public class Server
                 BufferedReader in = new BufferedReader(new InputStreamReader(SK.getInputStream()));
                 PrintWriter out = new PrintWriter(SK.getOutputStream(), true);
                 ArrayList<String> list=new ArrayList<String>();
-                out.println("server: got connection from client " + SK.getLocalAddress().getHostAddress());
+                String IPAddress = SK.getLocalAddress().getHostAddress();
+                out.println("server: got connection from client " + IPAddress);
+                out.println("Server is ready...");
 
                 while(true)
                 {
                     String input = in.readLine();
+                    System.out.println(IPAddress + " sends " + input);
                     if (input.equals("UPPERCASE") || input.equals("LOWERCASE") || input.equals("REVERSE"))
                     {
                         String function = input;
                         out.println("s: 200 OK");
                         input = in.readLine();
+                        System.out.println(IPAddress + " sends " + input);
                         while(!input.equals("."))
                         {
                             if(function.equals("UPPERCASE"))
@@ -56,6 +60,7 @@ public class Server
                             if(function.equals("REVERSE"))
                                 list.add(new StringBuilder(input).reverse().toString());
                             input = in.readLine();
+                            System.out.println(IPAddress + " sends " + input);
                         }
                         Iterator itr = list.iterator();
                         while(itr.hasNext())
