@@ -51,11 +51,13 @@ public class Server
                             list.add(input.toUpperCase());
                             input = in.readLine();
                         }
-                        Iterator itr=list.iterator();
+                        Iterator itr = list.iterator();
                         while(itr.hasNext())
                         {
                             out.println("s: " + itr.next());
                         }
+                        System.out.println("pressed");
+                        list.clear();
                     }
 
                     if (input.equals("LOWERCASE"))
@@ -76,37 +78,8 @@ public class Server
             }
             catch (IOException e)
             {
-                System.out.println("");
+                System.out.println(e);
             }
         }
-
     }
-
-    /*
-    public void run() throws Exception
-    {
-
-        try
-        {
-            while(true)
-            {
-                Socket SK = srvSk.accept();
-                PrintStream PS = new PrintStream(SK.getOutputStream());
-
-                InputStreamReader IR = new InputStreamReader(SK.getInputStream());
-                BufferedReader BR = new BufferedReader(IR);
-
-                String message = BR.readLine();
-
-                if(message.equals("connected"))
-                    PS.println("server: got connection from client " + SK.getLocalAddress().getHostAddress());
-                else
-                    PS.println("other message received");
-            }
-        }
-        finally
-        {
-            srvSk.close();
-        }
-    }*/
 }

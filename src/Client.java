@@ -48,19 +48,4 @@ public class Client
             input = kb.nextLine();
         }
     }
-    /*
-    public void run() throws Exception
-    {
-        Socket sk = new Socket("localhost",1025);
-
-        PrintStream PS = new PrintStream(sk.getOutputStream());
-        String command = "connect";
-        PS.println(command);
-
-        InputStreamReader IR = new InputStreamReader(sk.getInputStream());
-        BufferedReader BR = new BufferedReader(IR);
-
-        String MESSAGE = BR.readLine();
-        System.out.println(MESSAGE);
-    }*/
 }
