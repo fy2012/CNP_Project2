@@ -32,6 +32,7 @@ public class Client
             String feedback = in.readLine();
             System.out.println(feedback);
             count = 0;
+
             while(!input.equals(".") && !feedback.equals("400: Not a valid command!"))
             {
                 count++;
@@ -47,6 +48,13 @@ public class Client
 
             System.out.print("c: ");
             input = kb.nextLine();
+        }
+
+        if(input.equals("EXIT"))
+        {
+            out.println(input);
+            String feedback = in.readLine();
+            System.out.println(feedback);
         }
     }
 }
