@@ -54,9 +54,7 @@ public class Server
                             if(function.equals("LOWERCASE"))
                                 list.add(input.toLowerCase());
                             if(function.equals("REVERSE"))
-                            {
-
-                            }
+                                list.add(new StringBuilder(input).reverse().toString());
                             input = in.readLine();
                         }
                         Iterator itr = list.iterator();
@@ -67,17 +65,6 @@ public class Server
                         list.clear();
                     }
 
-                    /*
-                    if (input.equals("LOWERCASE"))
-                    {
-                        out.println("200 OK");
-                    }
-
-                    if (input.equals("REVERSE"))
-                    {
-                        out.println("200 OK");
-                    }
-                    */
                     else if (input.equals("EXIT"))
                     {
                         out.println("200 OK");
